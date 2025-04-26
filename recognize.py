@@ -4,7 +4,6 @@ import numpy as np
 from datetime import datetime
 from openpyxl import Workbook, load_workbook
 import os
-from PIL import Image, ImageTk
 import logging
 
 EXCEL_FILE = "attendance.xlsx"
@@ -48,7 +47,7 @@ def recognize_faces(known_face_encodings, known_face_names, video_label, app, up
         face_encodings = face_recognition.face_encodings(rgb_frame, known_face_locations=face_locations)
 
         for (top, right, bottom, left), face_encoding in zip(face_locations, face_encodings):
-            matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=0.4)
+            matches = face_recognition.compare_faces(known_face_encodings, face_encoding, tolerance=0.9)
             name = "Unknown"
 
             face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
